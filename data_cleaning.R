@@ -13,6 +13,9 @@ tj_list <- tj_list %>%
   arrange(`TJ Surgery Date`, mlbamid)
 
 tj_list$Team <- as.factor(tj_list$Team)
+tj_list$Player[duplicated(tj_list$Player) == TRUE]
+#tj_list$mlbamid[duplicated(tj_list$mlbamid) == TRUE]
+multiple_tj <- tj_list$Player[duplicated(tj_list$Player) == TRUE]
 
 # The 'Team' variable assumes that a player started with and stayed with a team throughout rehab.
 # At this point, I am only assessing by the team at time of the surgery although changing teams is certainly going to influence thing
@@ -30,13 +33,43 @@ pitchers <- pitchers %>%
   select(playerID) %>%
   arrange(playerID) %>%
   unique.data.frame()
+################
+#####
+# There would be a better way of doing this but try to identify if any of the players with multiple TJ's 
+# overlap with the players with the same name.
+#for (k in 1:length(multiple_tj)) {
+#  for (l in 1:length(pitchers_duplicated)) {
+#    if (multiple_tj[k] == pitchers_duplicated[l]) {
+#      print(multiple_tj[k])
+#    }
+#    else {
+#      print("No Match")
+#    }
+#  }
+#}
+# Join the pitchers and people tables. This didn't work though so need to remove all the duplicates first
 
-# Join the pitchers and people tables
 pitcher_list <- inner_join(people, pitchers, "playerID")
 
 pitcher_list$Player <- paste(pitcher_list$nameFirst,  pitcher_list$nameLast)
+pitcher_list <- pitcher_list %>% filter(finalGame >= 1970-01-01)
+
+pitcher_list$Player[duplicated(pitcher_list$Player) == TRUE]
+pitchers_duplicated <- pitcher_list$Player[duplicated(pitcher_list$Player) == TRUE]
+pitchers_duplicated <- as.data.frame(pitchers_duplicated)
+colnames(pitchers_duplicated) <- "Player"
+
+pitchers_duplicated_df <- pitcher_list[duplicated(pitcher_list$Player) == TRUE,]
+
+pitcher_list <- pitcher_list %>%
+  anti_join(pitchers_duplicated_df, by = "Player")
+
 
 tj_final_game <- inner_join(tj_list, pitcher_list, "Player") 
-# There are 7 fewer rows here than in tj_list which I don't know why they're missing. That needs to be looked into.
+# There are 25 fewer rows here than in tj_list which I don't know why they're missing.
 tj_final_game <- tj_final_game %>%
   select(Player:Team, Age:playerID, finalGame)
+
+
+# No matches between pitchers with multiple TJs and pitchers with the same name
+# Move onto data analysis now and I can come back to sort the cleaning out later. The basic format I need is in place.

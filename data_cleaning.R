@@ -70,6 +70,40 @@ tj_final_game <- inner_join(tj_list, pitcher_list, "Player")
 tj_final_game <- tj_final_game %>%
   select(Player:Team, Age:playerID, finalGame)
 
-
+colnames(tj_final_game) <- c("Player", "TJ_Surgery_Date", "Team", "Age", "mlbamid", "fgid", "playerID", "finalGame")
+tj_final_game
 # No matches between pitchers with multiple TJs and pitchers with the same name
+
+# The most recent of the final games are 2018 so I think I should remove all players with a TJ Surgery Date in 2019.
+# CENSORING
+# How to do the censoring is more complicated. I think classifying final games in 2018 as censored. Can reassess this
+# at a later date.
+# Final game is the "time of death" unless they had a second TJ which should be the "time of death".
+tj_final_game$Player[duplicated(tj_final_game$Player) == TRUE]
+tj_final_game <- tj_final_game %>% arrange(Player)
+
+tj_final_game$event <- rep(NA, 414)
+
+# This marks final games in 2018 as censored
+for (i in 1:414) {
+  if (tj_final_game$finalGame[i] >= "2018-01-01") {
+    #print(tj_final_game$Player[i])
+    #sum <- sum + 1
+    #print(sum)
+    tj_final_game$event[i] <- 0
+  }
+  else {
+    tj_final_game$event[i] <- 1
+  }
+}
+
+# This marks 2nd TJ as a "death"
+for (i in 1:413) {
+  if (tj_final_game$Player[i] == tj_final_game$Player[i + 1]) {
+    #print(tj_final_game$Player[i])
+    tj_final_game$event[i + 1] <- 1
+  }
+}
+
+
 # Move onto data analysis now and I can come back to sort the cleaning out later. The basic format I need is in place.

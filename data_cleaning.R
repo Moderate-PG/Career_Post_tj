@@ -75,6 +75,8 @@ tj_final_game
 # No matches between pitchers with multiple TJs and pitchers with the same name
 
 # The most recent of the final games are 2018 so I think I should remove all players with a TJ Surgery Date in 2019.
+tj_final_game <- tj_final_game %>%
+  filter(TJ_Surgery_Date < "2015-01-01")
 # CENSORING
 # How to do the censoring is more complicated. I think classifying final games in 2018 as censored. Can reassess this
 # at a later date.
@@ -82,28 +84,37 @@ tj_final_game
 tj_final_game$Player[duplicated(tj_final_game$Player) == TRUE]
 tj_final_game <- tj_final_game %>% arrange(Player)
 
-tj_final_game$event <- rep(NA, 414)
+tj_final_game$censor <- rep(NA, 322)
 
 # This marks final games in 2018 as censored
-for (i in 1:414) {
+for (i in 1:322) { # Hard coded lenght of the df which is not ideal.
   if (tj_final_game$finalGame[i] >= "2018-01-01") {
     #print(tj_final_game$Player[i])
     #sum <- sum + 1
     #print(sum)
-    tj_final_game$event[i] <- 0
+    tj_final_game$censor[i] <- 0
   }
   else {
-    tj_final_game$event[i] <- 1
+    tj_final_game$censor[i] <- 1
   }
 }
 
 # This marks 2nd TJ as a "death"
-for (i in 1:413) {
+for (i in 1:321) {
   if (tj_final_game$Player[i] == tj_final_game$Player[i + 1]) {
     #print(tj_final_game$Player[i])
-    tj_final_game$event[i + 1] <- 1
+    tj_final_game$censor[i + 1] <- 1
   }
 }
 
+# Calculating the amount of time between TJ surgery and the final game.
+# If the player never returned to the majors following surgery, assuming the surgery was before 2018, they are considered 
+# retired at time of surgery to avoid any negative values.
 
+tj_final_game$time <- tj_final_game$finalGame - tj_final_game$TJ_Surgery_Date
+for (i in 1:322) {
+  if (tj_final_game$time[i] < 0) {
+    tj_final_game$time[i] <- 0
+  }
+}
 # Move onto data analysis now and I can come back to sort the cleaning out later. The basic format I need is in place.

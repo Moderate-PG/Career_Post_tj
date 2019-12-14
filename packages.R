@@ -2,8 +2,12 @@
 #install.packages("lubridate")
 #install.packages("survival")
 #install.packages("survminer")
+#install.packages("magrittr")
+#install.packages("purr")
 
 library(tidyverse)
 library(lubridate)
 library(survival)
 library(survminer)
+library(magrittr)
+library(purrr)

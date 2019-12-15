@@ -17,7 +17,8 @@ tj_plot <- survfit(Surv(time, censor) ~ 1, data = tj_final_game)
 ggsurvplot(tj_plot, data = tj_final_game,
            conf.int = TRUE,
            pval = TRUE,
-           risk.table = TRUE)
+           risk.table = TRUE,
+           surv.median.line = "hv")
 # It would be interesting to see how many never returned after their TJ.
 
 tj_plotXteam <- survfit(Surv(time, censor) ~ Team, data = tj_final_game)

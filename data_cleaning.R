@@ -118,3 +118,5 @@ for (i in 1:322) {
   }
 }
 # Move onto data analysis now and I can come back to sort the cleaning out later. The basic format I need is in place.
+setwd("~/Data Science Portfolio/TJ_survival")
+write_csv(tj_final_game, "tj_final_game.csv")

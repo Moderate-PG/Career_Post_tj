@@ -28,18 +28,24 @@ Scripts
 The packages I used for cleaning and presenting the data are in the
 ‘packages’ script. The ‘data\_cleaning’ script contains the R code used
 to clean and merge the data to produce a usable form. Key steps within
-the script were: *Excluding all players with surgeries during 2019 as
-they would still be recovering *The game logs only extended to the end
-of 2018 and thus for the majority of players their final game was simply
-their team’s last game of the season. Thus I decided to classify any
-final games in 2018 as censored. This is not perfect but hopefully isn’t
-too wrong. *If a player underwent a 2nd or 3rd TJ, it was counted as a
-‘death’. If they returned from the surgery, I would begin counting the
-days untli the final game from that 2nd or 3rd surgery. *I worked under
-the assumption that the player would complete their recovery from
-surgery and return to play all with the same team. This is not always
-the case but I thought it would be reasonable to ignore the exceptions
-to this for now.
+the script were:
+
+\*Excluding all players with surgeries during 2019 as they would still
+be recovering
+
+\*The game logs only extended to the end of 2018 and thus for the
+majority of players their final game was simply their team’s last game
+of the season. Thus I decided to classify any final games in 2018 as
+censored. This is not perfect but hopefully isn’t too wrong.
+
+\*If a player underwent a 2nd or 3rd TJ, it was counted as a ‘death’. If
+they returned from the surgery, I would begin counting the days untli
+the final game from that 2nd or 3rd surgery.
+
+\*I worked under the assumption that the player would complete their
+recovery from surgery and return to play all with the same team. This is
+not always the case but I thought it would be reasonable to ignore the
+exceptions to this for now.
 
 The Analysis
 ------------
@@ -58,17 +64,22 @@ have had TJ.
 ![](README_files/figure-markdown_github/unnamed-chunk-2-1.png)
 
 There are a couple of things that stood out to me when looking at the
-result. *A large number of players, \~20%, never make it back to pitch
-again, as evidenced by the straight line at the start of the plot. *When
-looking at all the players together we see half the players have played
-their final game \~1200 days (\~3.29 years) post Tommy John (The dotted
-line).  
-*For reference, the crosses mean the player was ‘censored’ it means they
-are still playing. Therefore there are quite a few players past that
-median point that are still yet to retire and will likely move that
-median further along in the years to come. *The player with the longest
-career post TJ career didn’t play their final game until \~5800 days
-(\~15.9 years) later.
+result.
+
+\*A large number of players, \~20%, never make it back to pitch again,
+as evidenced by the straight line at the start of the plot.
+
+\*When looking at all the players together we see half the players have
+played their final game \~1200 days (\~3.29 years) post Tommy John (The
+dotted line).
+
+\*For reference, the crosses mean the player was ‘censored’ it means
+they are still playing. Therefore there are quite a few players past
+that median point that are still yet to retire and will likely move that
+median further along in the years to come.
+
+\*The player with the longest career post TJ career didn’t play their
+final game until \~5800 days (\~15.9 years) later.
 
 It is important to remember that this plot includes all surgeries since
 inception, results are likely better these days and thus I would imagine
@@ -87,10 +98,14 @@ Next Steps
 As mentioned, only including MLB players left far too few players to do
 much with and certainly not enough to compare differences between teams.
 I would like to continue to build on this over time and thus my next
-steps would be: *Incorporate MiLB data into the mix. Getting the data
-required to do this is the hurdle to completing this at the moment so it
-may take some time to figure out. *Improve accuracy of the “Final Game”
-date. At this point in time there is no information about whether the
-final game was an MLB or MiLB game. This information would add an
-interesting new dimension to the data allowing us to know of those who
-returned to play after TJ, how many made it back to the majors.
+steps would be:
+
+\*Incorporate MiLB data into the mix. Getting the data required to do
+this is the hurdle to completing this at the moment so it may take some
+time to figure out.
+
+\*Improve accuracy of the “Final Game” date. At this point in time there
+is no information about whether the final game was an MLB or MiLB game.
+This information would add an interesting new dimension to the data
+allowing us to know of those who returned to play after TJ, how many
+made it back to the majors.

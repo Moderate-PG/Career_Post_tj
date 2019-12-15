@@ -27,36 +27,95 @@ ggsurvplot(tj_plotXteam, pval = TRUE)
 g <- ggsurvplot(tj_plotXteam, pval = FALSE)$plot + theme_bw() + facet_grid("Team", space = "free_y")
 g
 # I don't think I can get facet to show plots in an appropriate size so I will have to do them individually.
-ggsurvplot(survfit(Surv(time, censor) ~ 1, data = tj_final_game[tj_final_game$Team == "ARI", ]))
-ggsurvplot(survfit(Surv(time, censor) ~ 1, data = tj_final_game[tj_final_game$Team == "ATL", ]))
-ggsurvplot(survfit(Surv(time, censor) ~ 1, data = tj_final_game[tj_final_game$Team == "BAL", ]))
-ggsurvplot(survfit(Surv(time, censor) ~ 1, data = tj_final_game[tj_final_game$Team == "BOS", ]))
-ggsurvplot(survfit(Surv(time, censor) ~ 1, data = tj_final_game[tj_final_game$Team == "CHC", ]))
-ggsurvplot(survfit(Surv(time, censor) ~ 1, data = tj_final_game[tj_final_game$Team == "CHW", ]))
-ggsurvplot(survfit(Surv(time, censor) ~ 1, data = tj_final_game[tj_final_game$Team == "CIN", ]))
-ggsurvplot(survfit(Surv(time, censor) ~ 1, data = tj_final_game[tj_final_game$Team == "CLE", ]))
-ggsurvplot(survfit(Surv(time, censor) ~ 1, data = tj_final_game[tj_final_game$Team == "COL", ]))
-ggsurvplot(survfit(Surv(time, censor) ~ 1, data = tj_final_game[tj_final_game$Team == "DET", ]))
-ggsurvplot(survfit(Surv(time, censor) ~ 1, data = tj_final_game[tj_final_game$Team == "HOU", ]))
-ggsurvplot(survfit(Surv(time, censor) ~ 1, data = tj_final_game[tj_final_game$Team == "KC", ]))
-ggsurvplot(survfit(Surv(time, censor) ~ 1, data = tj_final_game[tj_final_game$Team == "LAA", ]))
-ggsurvplot(survfit(Surv(time, censor) ~ 1, data = tj_final_game[tj_final_game$Team == "LAD", ]))
-ggsurvplot(survfit(Surv(time, censor) ~ 1, data = tj_final_game[tj_final_game$Team == "MIA", ]))
-ggsurvplot(survfit(Surv(time, censor) ~ 1, data = tj_final_game[tj_final_game$Team == "MIL", ]))
-ggsurvplot(survfit(Surv(time, censor) ~ 1, data = tj_final_game[tj_final_game$Team == "MIN", ]))
-ggsurvplot(survfit(Surv(time, censor) ~ 1, data = tj_final_game[tj_final_game$Team == "NYM", ]))
-ggsurvplot(survfit(Surv(time, censor) ~ 1, data = tj_final_game[tj_final_game$Team == "NYY", ]))
-ggsurvplot(survfit(Surv(time, censor) ~ 1, data = tj_final_game[tj_final_game$Team == "OAK", ]))
-ggsurvplot(survfit(Surv(time, censor) ~ 1, data = tj_final_game[tj_final_game$Team == "PHI", ]))
-ggsurvplot(survfit(Surv(time, censor) ~ 1, data = tj_final_game[tj_final_game$Team == "PIT", ]))
-ggsurvplot(survfit(Surv(time, censor) ~ 1, data = tj_final_game[tj_final_game$Team == "SD", ]))
-ggsurvplot(survfit(Surv(time, censor) ~ 1, data = tj_final_game[tj_final_game$Team == "SEA", ]))
-ggsurvplot(survfit(Surv(time, censor) ~ 1, data = tj_final_game[tj_final_game$Team == "SF", ]))
-ggsurvplot(survfit(Surv(time, censor) ~ 1, data = tj_final_game[tj_final_game$Team == "STL", ]))
-ggsurvplot(survfit(Surv(time, censor) ~ 1, data = tj_final_game[tj_final_game$Team == "TB", ]))
-ggsurvplot(survfit(Surv(time, censor) ~ 1, data = tj_final_game[tj_final_game$Team == "TEX", ]))
-ggsurvplot(survfit(Surv(time, censor) ~ 1, data = tj_final_game[tj_final_game$Team == "TOR", ]))
-ggsurvplot(survfit(Surv(time, censor) ~ 1, data = tj_final_game[tj_final_game$Team == "WAS", ]))
+ggsurvplot(survfit(Surv(time, censor) ~ 1, data = tj_final_game[tj_final_game$Team == "ARI", ]),
+           risk.table = TRUE, surv.median.line = "hv")
+
+ggsurvplot(survfit(Surv(time, censor) ~ 1, data = tj_final_game[tj_final_game$Team == "ATL", ]),
+           risk.table = TRUE, surv.median.line = "hv")
+
+ggsurvplot(survfit(Surv(time, censor) ~ 1, data = tj_final_game[tj_final_game$Team == "BAL", ]),
+           risk.table = TRUE, surv.median.line = "hv")
+
+ggsurvplot(survfit(Surv(time, censor) ~ 1, data = tj_final_game[tj_final_game$Team == "BOS", ]),
+           risk.table = TRUE, surv.median.line = "hv")
+
+ggsurvplot(survfit(Surv(time, censor) ~ 1, data = tj_final_game[tj_final_game$Team == "CHC", ]),
+           risk.table = TRUE, surv.median.line = "hv")
+
+ggsurvplot(survfit(Surv(time, censor) ~ 1, data = tj_final_game[tj_final_game$Team == "CHW", ]),
+           risk.table = TRUE, surv.median.line = "hv")
+
+ggsurvplot(survfit(Surv(time, censor) ~ 1, data = tj_final_game[tj_final_game$Team == "CIN", ]),
+           risk.table = TRUE, surv.median.line = "hv")
+
+ggsurvplot(survfit(Surv(time, censor) ~ 1, data = tj_final_game[tj_final_game$Team == "CLE", ]),
+           risk.table = TRUE, surv.median.line = "hv")
+
+ggsurvplot(survfit(Surv(time, censor) ~ 1, data = tj_final_game[tj_final_game$Team == "COL", ]),
+           risk.table = TRUE, surv.median.line = "hv")
+
+ggsurvplot(survfit(Surv(time, censor) ~ 1, data = tj_final_game[tj_final_game$Team == "DET", ]),
+           risk.table = TRUE, surv.median.line = "hv")
+
+ggsurvplot(survfit(Surv(time, censor) ~ 1, data = tj_final_game[tj_final_game$Team == "HOU", ]),
+           risk.table = TRUE, surv.median.line = "hv")
+
+ggsurvplot(survfit(Surv(time, censor) ~ 1, data = tj_final_game[tj_final_game$Team == "KC", ]),
+           risk.table = TRUE, surv.median.line = "hv")
+
+ggsurvplot(survfit(Surv(time, censor) ~ 1, data = tj_final_game[tj_final_game$Team == "LAA", ]),
+           risk.table = TRUE, surv.median.line = "hv")
+
+ggsurvplot(survfit(Surv(time, censor) ~ 1, data = tj_final_game[tj_final_game$Team == "LAD", ]),
+           risk.table = TRUE, surv.median.line = "hv")
+
+ggsurvplot(survfit(Surv(time, censor) ~ 1, data = tj_final_game[tj_final_game$Team == "MIA", ]),
+           risk.table = TRUE, surv.median.line = "hv")
+
+ggsurvplot(survfit(Surv(time, censor) ~ 1, data = tj_final_game[tj_final_game$Team == "MIL", ]),
+           risk.table = TRUE, surv.median.line = "hv")
+
+ggsurvplot(survfit(Surv(time, censor) ~ 1, data = tj_final_game[tj_final_game$Team == "MIN", ]),
+           risk.table = TRUE, surv.median.line = "hv")
+
+ggsurvplot(survfit(Surv(time, censor) ~ 1, data = tj_final_game[tj_final_game$Team == "NYM", ]),
+           risk.table = TRUE, surv.median.line = "hv")
+
+ggsurvplot(survfit(Surv(time, censor) ~ 1, data = tj_final_game[tj_final_game$Team == "NYY", ]),
+           risk.table = TRUE, surv.median.line = "hv")
+
+ggsurvplot(survfit(Surv(time, censor) ~ 1, data = tj_final_game[tj_final_game$Team == "OAK", ]),
+           risk.table = TRUE, surv.median.line = "hv")
+
+ggsurvplot(survfit(Surv(time, censor) ~ 1, data = tj_final_game[tj_final_game$Team == "PHI", ]),
+           risk.table = TRUE, surv.median.line = "hv")
+
+ggsurvplot(survfit(Surv(time, censor) ~ 1, data = tj_final_game[tj_final_game$Team == "PIT", ]),
+           risk.table = TRUE, surv.median.line = "hv")
+
+ggsurvplot(survfit(Surv(time, censor) ~ 1, data = tj_final_game[tj_final_game$Team == "SD", ]),
+           risk.table = TRUE, surv.median.line = "hv")
+
+ggsurvplot(survfit(Surv(time, censor) ~ 1, data = tj_final_game[tj_final_game$Team == "SEA", ]),
+           risk.table = TRUE, surv.median.line = "hv")
+
+ggsurvplot(survfit(Surv(time, censor) ~ 1, data = tj_final_game[tj_final_game$Team == "SF", ]),
+           risk.table = TRUE, surv.median.line = "hv")
+
+ggsurvplot(survfit(Surv(time, censor) ~ 1, data = tj_final_game[tj_final_game$Team == "STL", ]),
+           risk.table = TRUE, surv.median.line = "hv")
+
+ggsurvplot(survfit(Surv(time, censor) ~ 1, data = tj_final_game[tj_final_game$Team == "TB", ]),
+           risk.table = TRUE, surv.median.line = "hv")
+
+ggsurvplot(survfit(Surv(time, censor) ~ 1, data = tj_final_game[tj_final_game$Team == "TEX", ]),
+           risk.table = TRUE, surv.median.line = "hv")
+
+ggsurvplot(survfit(Surv(time, censor) ~ 1, data = tj_final_game[tj_final_game$Team == "TOR", ]),
+           risk.table = TRUE, surv.median.line = "hv")
+
+ggsurvplot(survfit(Surv(time, censor) ~ 1, data = tj_final_game[tj_final_game$Team == "WAS", ]),
+           risk.table = TRUE, surv.median.line = "hv")
 
 # As I expected, there is way too much going on here to really make anything of it so will need to look into this another way.
 

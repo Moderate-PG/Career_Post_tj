@@ -1,3 +1,6 @@
+setwd("~/Data Science Portfolio/TJ_survival")
+tj_final_game <- read_csv("tj_final_game.csv")
+
 # ANALYSIS
 # Simple descriptive stats
 ggplot(aes(x = reorder(Team, Team, function(x) -length(x)), fill = Team), data = tj_final_game) +

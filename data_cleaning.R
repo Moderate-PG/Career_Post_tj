@@ -1,7 +1,7 @@
 # Data cleaning and merging of datasets for tommy john career survival analysis
 
 # Dataset of List of pitchers having received tommy john
-setwd("C:/Users/pgill/Documents/Data Science Portfolio/TJ_survival")
+setwd("~/Data Science Portfolio/TJ_survival")
 tj_list <- read_csv("tj_list_mlb.csv")
 tj_list$`TJ Surgery Date` <- mdy(tj_list$`TJ Surgery Date`)
 tj_list <- tj_list %>%
@@ -22,7 +22,7 @@ multiple_tj <- tj_list$Player[duplicated(tj_list$Player) == TRUE]
 
 
 # Load in the pitching appearance data
-setwd("C:/Users/pgill/Documents/Data Science Portfolio/TJ_survival/Appearance data/baseballdatabank-2019.2/baseballdatabank-2019.2/core/")
+setwd("~/Data Science Portfolio/TJ_survival/Appearance data/baseballdatabank-2019.2/baseballdatabank-2019.2/core/")
 
 people <- read_csv("People.csv") 
 people <- people %>%

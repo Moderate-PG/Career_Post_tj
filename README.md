@@ -4,11 +4,12 @@ The Idea
 I set out to investigate the length of a major league baseball career
 following Tommy John surgery. As the title suggests, I only considered
 pitchers and not position players who underwent the procedure. I stuck
-to players with MLB experience and not career minor leaguers, for now
-anyway. I also looked into recoveries on a team by team basis.  
+to players with MLB experience and not career minor leaguers (this is
+something I am considering for a future analysis). I was also in whether
+recovery times vaired by team.  
 Additionally, this project gives me a chance to apply what I have learnt
-about survival analysis. As I am no expert in the matter, this is a work
-in progress.
+about survival analysis. As I am not an expert on the topic, I certainly
+consider this a work in progress.
 
 Data
 ----
@@ -16,8 +17,8 @@ Data
 I used [this
 document](https://docs.google.com/spreadsheets/d/1gQujXQQGOVNaiuwSN680Hq-FDVsCwvN-3AazykOBON0/edit#gid=0)
 as the source of players who had undergone Tommy John and the date of
-the surgery. To get the date of a players final appearance, I used data
-from the [Chadwick
+their surgery. To get the date of a players final appearance, I used
+data from the [Chadwick
 Bureau](https://github.com/chadwickbureau/baseballdatabank). I merged
 the ‘People’ and ‘Pitching’ files with the list of players with Tommy
 John to end up with my final list of players.
@@ -27,8 +28,8 @@ Scripts
 
 The packages I used for cleaning and presenting the data are in the
 ‘packages’ script. The ‘data\_cleaning’ script contains the R code used
-to clean and merge the data to produce a usable form. Key steps within
-the script were:
+to clean and merge the data to produce a usable dataset in a single
+table. Key steps within the script were:
 
 \*Excluding all players with surgeries during 2019 as they would still
 be recovering
@@ -50,9 +51,10 @@ exceptions to this for now.
 The Analysis
 ------------
 
-Since the first TJ surgery, every team has unsurprisingly had an MLB
-player undergo the surgery. The numbers differ from team to team though
-with Atlanta having the most and the White Sox the least.
+Since the first TJ surgery in 1974, every team has unsurprisingly had an
+MLB player undergo the surgery. The numbers differ from team to team
+though with Atlanta having the most and the White Sox the least as of
+the end of the 2018 season.
 ![](README_files/figure-markdown_github/unnamed-chunk-1-1.png)
 
 Below is the survival curve containing all 322 pitchers on my list who
@@ -87,7 +89,7 @@ the median career length would in fact be longer than the \~1200 days we
 see here.
 
 Finally, the plot below shows the survival curves by team but as you can
-see, they are all a but of a mess and there isn’t nearly enough data to
+see, they are all a bit of a mess and there isn’t nearly enough data to
 compare teams.
 
 ![](README_files/figure-markdown_github/unnamed-chunk-3-1.png)
@@ -109,3 +111,7 @@ is no information about whether the final game was an MLB or MiLB game.
 This information would add an interesting new dimension to the data
 allowing us to know of those who returned to play after TJ, how many
 made it back to the majors.
+
+\*Consider breaking the data up into different eras to see whetehr there
+is a difference in recovery between the early days of the surgery and
+more recent decades.

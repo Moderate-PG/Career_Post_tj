@@ -43,7 +43,8 @@ ggplot(aes(x = reorder(Team, Team, function(x) -length(x)), fill = Team), data =
   geom_bar() +
   theme(legend.position = "none") +
   ylab("Number of Tommy John Surgeries") +
-  xlab("MLB Team")
+  xlab("MLB Team") +
+  theme(axis.text.x = element_text(angle = 45))
 ```
 
 

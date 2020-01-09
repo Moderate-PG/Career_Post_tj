@@ -1,3 +1,27 @@
+# UPDATE THE MERGING
+# I need to improve the merging of these different files. The SFBB-Player ID Map has the MLB ID (MLBAMID in TJ list) as well as the 
+# BBREF ID which is just IDPlayer (the first column) in the SFBB Player ID Map. I should update the merging, but still need 
+# a better way of dealing with players who have multiple surgeries. 
+# Is innerjoin() still appropriate for dealing with multiple surgeries, it won't remove them as duplicates or something by accident?
+# I need to check on this. Although technically they won't be the same as the surgery dates will be different. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Data cleaning and merging of datasets for tommy john career survival analysis
 
 # Dataset of List of pitchers having received tommy john

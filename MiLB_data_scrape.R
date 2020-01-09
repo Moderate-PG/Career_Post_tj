@@ -43,3 +43,27 @@ robotstxt(url)
 
 # PROBLEM 4 - CAPPING MEMORY USAGE
 # I can't lower the memory limit, I think it should be fine. I just need to set up the parallelisation.
+# Example of setting up for parallelisation
+numCores <- detectCores()
+numCores
+cl <- makeCluster(numCores)
+# Example to show that packages and variables have to be loaded onto each core
+clusterEvalQ(cl, 2 + 2)
+x <- 1
+clusterEvalQ(cl, x)
+clusterEvalQ(cl, y <- 1)
+clusterEvalQ(cl, y)
+y # which now doesn't exist in the main process
+clusterExport(cl, "x")
+clusterEvalQ(cl, x)
+
+# To load in packages for use on each cluster
+clusterEvalQ(cl, {
+  library(ggplot2)
+  library(purrr)
+})
+
+#Then can use parApply, parSapply or parLapply as yo normally would to run the function in parallel
+stopCluster(cl)
+# Not required but good practice. It slows things down if left on in the background. Closing the R session will automatically stop it
+# though.

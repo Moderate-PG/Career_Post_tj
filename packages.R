@@ -4,6 +4,7 @@
 #install.packages("survminer")
 #install.packages("magrittr")
 #install.packages("purr")
+install.packages("parallel")
 
 library(tidyverse)
 library(lubridate)
@@ -11,3 +12,4 @@ library(survival)
 library(survminer)
 library(magrittr)
 library(purrr)
+library(parallel)

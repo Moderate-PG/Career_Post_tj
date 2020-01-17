@@ -30,7 +30,7 @@ tj_list <- read_csv("tj_list_mlb.csv")
 tj_list$`TJ Surgery Date` <- mdy(tj_list$`TJ Surgery Date`)
 tj_list <- tj_list %>%
   select(Player:Position, Age, mlbamid, fgid) %>%
-  filter(Position == "P", Level == "MLB") %>%
+  filter(Position == "P", Level == "MLB" | Level == "AAA" | Level == "A" | Level == "A-" | Level == "A+" | Level == "AA" | Level == "Rk") %>%
   arrange(mlbamid)
 
 tj_list <- tj_list %>%
@@ -43,7 +43,9 @@ multiple_tj <- tj_list$Player[duplicated(tj_list$Player) == TRUE]
 
 # The 'Team' variable assumes that a player started with and stayed with a team throughout rehab.
 # At this point, I am only assessing by the team at time of the surgery although changing teams is certainly going to influence thing
-
+# Load in the ID Map
+id_map <- read_csv("SFBB-Player-ID-Map.csv")
+id_map <- id_map %>% select(IDPLAYER, MLBID)
 
 # Load in the pitching appearance data
 setwd("~/Data Science Portfolio/TJ_survival/Appearance data/baseballdatabank-2019.2/baseballdatabank-2019.2/core/")
